@@ -1,0 +1,93 @@
+{
+  "name": "Bible Verse Daily",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -464,
+        -80
+      ],
+      "id": "4a2a958a-edd4-42f3-961a-87fe243a7227",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "url": "https://bible-api.com/john%203:16",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -256,
+        144
+      ],
+      "id": "6abf76d8-ac9d-448d-b564-546aecb61a49",
+      "name": "Get Daily Bible Verses"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const verse = item.json.verses[0];\n  return {\n    json: {\n      message: `${verse.book_name} ${verse.chapter}:${verse.verse} - ${verse.text}`\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -32,
+        -80
+      ],
+      "id": "f4e4fd98-b658-48dc-84f5-dcd096bec76a",
+      "name": "Format Verse"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Daily Bible Verses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Daily Bible Verses": {
+      "main": [
+        [
+          {
+            "node": "Format Verse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Verse": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "115b350a-3c4c-4617-aa5c-56b43ed004f1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b94fe4facea61c11b789ab3e9ae42502f077268c7e4952a84961d78ac1c95355"
+  },
+  "id": "FVYG3p9zKcdSxqla",
+  "tags": []
+}
