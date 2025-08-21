@@ -1,32 +1,49 @@
-n8n Workflow – Initial 3 Nodes
+📖 Bible n8n Automation Project
 
-This repository contains an n8n workflow with 3 nodes that were built as part of an automation project.
+This project contains an n8n workflow that automatically fetches Bible verses and sends them via email. It’s designed to help you (or your users) receive inspirational verses directly in the inbox.
 
-📌 Current Progress
+✨ Features
 
-✅ First 3 nodes created and exported.
+🔄 Automated workflow built in n8n
 
-🚧 Email trigger/notification node will be added in the next version.
+📜 Fetches Bible verses dynamically
 
-📥 How to Import the Workflow
+📧 Sends verses through email notification
 
-Download the workflow JSON file from this repo (workflows/MyWorkflow.json).
+⚡ Ready-to-import workflow JSON
+
+🚀 Setup Instructions
+
+Clone or download this repository.
 
 Open your n8n instance.
 
-Click Workflows → Import from File.
+Navigate to Workflows → Import from File.
 
-Select the downloaded .json file.
+Upload the file located at:
 
-The workflow will now appear in your n8n dashboard.
+workflows/BibleWorkflow.json
+
+Configure your Email node with valid SMTP credentials (e.g., Gmail, Outlook, or custom).
+
+Activate the workflow and let it run automatically.
 
 📂 Repository Structure
 workflows/
-  └── MyWorkflow.json   # Exported 3-node workflow
-README.md               # Project documentation
+└── BibleWorkflow.json # Exported n8n workflow for Bible automation
+README.md # Project documentation
 
-🚀 Next Steps
+📧 Example Email
 
-Add email trigger/notification node.
+Subject: 📖 Today’s Bible Verse
+Body:
 
-Extend workflow for GitHub automation.
+John 3:16  
+For God so loved the world, that he gave his only begotten Son,  
+that whosoever believeth in him should not perish, but have everlasting life.
+
+⚠️ Notes
+
+Make sure your email provider allows SMTP / App Passwords (Gmail requires enabling 2FA + App Password).
+
+If using Gmail OAuth2, configure the OAuth Consent Screen and add yourself as a Test User.
